@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://b3x1tr5jny3qx"]
+
+[ext_resource type="Texture2D" uid="uid://du0d2ansfkrri" path="res://Objects/Rocket/rocketman.png" id="1_d21ai"]
+[ext_resource type="Texture2D" uid="uid://d1370tojxl46k" path="res://Objects/Rocket/rocketmanclicked.png" id="2_rj586"]
+[ext_resource type="Script" uid="uid://7e72r2qmy0vv" path="res://Code/Source.gd" id="3_hqns4"]
+[ext_resource type="Texture2D" uid="uid://co6bpnmoq5v0w" path="res://Objects/Misc/kaboom.png" id="4_d21ai"]
+[ext_resource type="AudioStream" uid="uid://b37my62yug54b" path="res://Sound/Thrust.ogg" id="5_rj586"]
+[ext_resource type="AudioStream" uid="uid://b463djj16yn22" path="res://Sound/0673. Jetpack Warning Beep.mp3" id="6_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://bkr3judkkidcq" path="res://Objects/Start/skybackground.png" id="6_rj586"]
+[ext_resource type="AudioStream" uid="uid://bbv86plu6baog" path="res://Sound/Explosion Trimmed.mp3" id="7_hqns4"]
+[ext_resource type="Texture2D" uid="uid://wjt4h5umjqqj" path="res://Objects/Start/island-1-upgrade.png" id="8_d2bti"]
+[ext_resource type="Script" uid="uid://dgiuifr3ow42u" path="res://sky_phase.gd" id="10_hqns4"]
+[ext_resource type="Script" uid="uid://bwu46arifru3v" path="res://bird_sprite.gd" id="12_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://qs0idupn0www" path="res://Objects/Birds/birdie.png" id="12_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://uobbrjrkj6yc" path="res://Objects/Stratos/darksky.png" id="13_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://bgn2btb31ae88" path="res://Objects/Start/island-1-var1.png" id="14_d2bti"]
+[ext_resource type="Texture2D" uid="uid://cl6hbjvkamcpl" path="res://Objects/Start/cloud2.png" id="15_ta5nu"]
+[ext_resource type="Texture2D" uid="uid://cmwyhokr4m2ik" path="res://Objects/Start/menu.png" id="16_ta5nu"]
+[ext_resource type="Script" uid="uid://cn2m67f1qrths" path="res://button.gd" id="17_flf07"]
+[ext_resource type="AudioStream" uid="uid://b8eddmh4o088n" path="res://Sound/PokeRogue OST- Route 888.mp3" id="18_k73cj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_napuk"]
+size = Vector2(75, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffx58"]
+size = Vector2(638, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t23gv"]
+size = Vector2(62, 51.5)
+
+[node name="Node2D" type="Node2D" unique_id=2022174004]
+
+[node name="Spaceship" type="RigidBody2D" parent="." unique_id=1147414672]
+z_index = 15
+position = Vector2(-26, -241)
+gravity_scale = 0.5
+freeze = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Rocket" type="TextureButton" parent="Spaceship" unique_id=360765054]
+offset_left = 546.0
+offset_top = 278.0
+offset_right = 886.0
+offset_bottom = 788.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("1_d21ai")
+texture_pressed = ExtResource("2_rj586")
+script = ExtResource("3_hqns4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Particles" type="CPUParticles2D" parent="Spaceship/Rocket" unique_id=758804302]
+z_index = -1
+position = Vector2(170, 412)
+amount = 30
+lifetime = 2.03
+speed_scale = 3.0
+randomness = 0.08
+lifetime_randomness = 0.73
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 172.73
+initial_velocity_max = 186.37
+angular_velocity_min = 13.09
+angular_velocity_max = 648.0
+linear_accel_min = -31.66
+linear_accel_max = -31.66
+angle_min = -85.1
+angle_max = 32.7
+scale_amount_min = 0.76
+scale_amount_max = 65.56
+color = Color(0.8070363, 0.29584098, 1.92523e-07, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Spaceship" unique_id=1286330784]
+visible = false
+position = Vector2(589.5, 343)
+shape = SubResource("RectangleShape2D_napuk")
+
+[node name="Camera2D" type="Camera2D" parent="Spaceship" unique_id=1532665922]
+position = Vector2(590, 335)
+zoom = Vector2(0.5, 0.5)
+
+[node name="VelocityLabel" type="RichTextLabel" parent="Spaceship" unique_id=1411027665]
+z_index = 2
+offset_left = 502.0
+offset_top = 211.0
+offset_right = 776.0
+offset_bottom = 236.0
+text = "Velocity:"
+
+[node name="HeightLabel" type="RichTextLabel" parent="Spaceship" unique_id=54922907]
+z_index = 2
+offset_left = 505.0
+offset_top = 241.0
+offset_right = 673.0
+offset_bottom = 281.0
+text = "Height"
+
+[node name="Kaboom" type="Sprite2D" parent="Spaceship" unique_id=209835147]
+visible = false
+z_index = 2
+position = Vector2(588.9971, 360.5)
+scale = Vector2(-1.1534028e-05, 0.0019607982)
+texture = ExtResource("4_d21ai")
+
+[node name="Thrust" type="AudioStreamPlayer2D" parent="Spaceship" unique_id=610911026]
+stream = ExtResource("5_rj586")
+volume_db = 2.0
+autoplay = true
+parameters/looping = true
+
+[node name="Beep" type="AudioStreamPlayer2D" parent="Spaceship" unique_id=1050619864]
+stream = ExtResource("6_4d7sh")
+volume_db = 7.5
+parameters/looping = true
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="Spaceship" unique_id=357874504]
+stream = ExtResource("7_hqns4")
+volume_db = 7.5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Spaceship" unique_id=1908150002]
+visible = false
+z_index = 15
+offset_left = 352.0
+offset_top = 181.0
+offset_right = 1077.0
+offset_bottom = 422.0
+theme_override_colors/default_color = Color(1, 0.2628613, 0.20336351, 1)
+theme_override_font_sizes/normal_font_size = 150
+text = "You Lose"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Spaceship" unique_id=2118517614]
+stream = ExtResource("18_k73cj")
+volume_db = 7.5
+autoplay = true
+parameters/looping = true
+
+[node name="StartingSpot" type="RigidBody2D" parent="." unique_id=1525089037]
+position = Vector2(-0.50097656, -9.25)
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartingSpot" unique_id=407103269]
+position = Vector2(493.50098, 534)
+shape = SubResource("RectangleShape2D_ffx58")
+
+[node name="Sprite2D" type="Sprite2D" parent="StartingSpot" unique_id=1847822614]
+z_index = -2
+position = Vector2(747.501, 488.74988)
+scale = Vector2(2.2464287, 2.429213)
+texture = ExtResource("8_d2bti")
+
+[node name="StratosPhase" type="Sprite2D" parent="." unique_id=662248977]
+z_index = -5
+position = Vector2(753, -32137)
+scale = Vector2(127.01395, 175.2676)
+texture = ExtResource("13_nr8wp")
+
+[node name="SkyPhase" type="Sprite2D" parent="." unique_id=1859744757]
+z_index = -5
+position = Vector2(761, -9217)
+scale = Vector2(50.728973, 73.707886)
+texture = ExtResource("6_rj586")
+script = ExtResource("10_hqns4")
+
+[node name="Bird" type="RigidBody2D" parent="." unique_id=2119281699]
+position = Vector2(485, 1312)
+gravity_scale = 0.0
+freeze = true
+
+[node name="BirdSprite" type="TextureButton" parent="Bird" unique_id=1089976640]
+offset_left = 60.999985
+offset_top = -45.000015
+offset_right = 388.0
+offset_bottom = 217.99998
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("12_x0ka3")
+script = ExtResource("12_0h7mo")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Bird" unique_id=468151045]
+position = Vector2(95, -19.75)
+shape = SubResource("RectangleShape2D_t23gv")
+
+[node name="Island" type="Sprite2D" parent="." unique_id=1850155308]
+position = Vector2(882.99994, 1284)
+scale = Vector2(0.26942682, 0.23465706)
+texture = ExtResource("14_d2bti")
+
+[node name="Cloud" type="Sprite2D" parent="." unique_id=1789863459]
+position = Vector2(1280, 1298)
+scale = Vector2(0.26942682, 0.23465706)
+texture = ExtResource("15_ta5nu")
+
+[node name="Winner" type="RichTextLabel" parent="." unique_id=1972873396]
+z_index = 15
+offset_left = 451.0
+offset_top = -19839.0
+offset_right = 965.0
+offset_bottom = -19732.0
+theme_override_colors/default_color = Color(0.3282248, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+text = "You win (for now)"
+
+[node name="Menu" type="Sprite2D" parent="." unique_id=1889500075]
+z_index = 25
+position = Vector2(561.5, 90)
+scale = Vector2(2.1352613, 1.6461732)
+texture = ExtResource("16_ta5nu")
+
+[node name="Button" type="Button" parent="." unique_id=672514943]
+z_index = 26
+offset_left = 136.0
+offset_top = -79.0
+offset_right = 910.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.5349397, 1, 0.53993684, 1)
+theme_override_font_sizes/font_size = 50
+text = "Play"
+script = ExtResource("17_flf07")
+
+[connection signal="body_entered" from="Spaceship" to="Spaceship/Rocket" method="_on_body_entered"]
+[connection signal="button_down" from="Spaceship/Rocket" to="Spaceship/Rocket" method="_on_button_down"]
+[connection signal="button_up" from="Spaceship/Rocket" to="Spaceship/Rocket" method="_on_button_up"]
+[connection signal="button_down" from="Bird/BirdSprite" to="Bird/BirdSprite" method="_on_button_down"]
+[connection signal="button_down" from="Button" to="Spaceship/Rocket" method="_on_button_button_down"]
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

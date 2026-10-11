@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b463djj16yn22"
+path="res://.godot/imported/0673. Jetpack Warning Beep.mp3-1e41c115e063741e3e379913282c1feb.mp3str"
+
+[deps]
+
+source_file="res://Sound/0673. Jetpack Warning Beep.mp3"
+dest_files=["res://.godot/imported/0673. Jetpack Warning Beep.mp3-1e41c115e063741e3e379913282c1feb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

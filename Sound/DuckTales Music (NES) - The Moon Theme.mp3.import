@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3l5et55b311e"
+path="res://.godot/imported/DuckTales Music (NES) - The Moon Theme.mp3-3d3135e3aef0a7c0dea2b74c964c81b5.mp3str"
+
+[deps]
+
+source_file="res://Sound/DuckTales Music (NES) - The Moon Theme.mp3"
+dest_files=["res://.godot/imported/DuckTales Music (NES) - The Moon Theme.mp3-3d3135e3aef0a7c0dea2b74c964c81b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

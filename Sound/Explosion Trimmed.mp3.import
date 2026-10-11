@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbv86plu6baog"
+path="res://.godot/imported/Explosion Trimmed.mp3-b777511fc26bdcb848669214f14d2a4e.mp3str"
+
+[deps]
+
+source_file="res://Sound/Explosion Trimmed.mp3"
+dest_files=["res://.godot/imported/Explosion Trimmed.mp3-b777511fc26bdcb848669214f14d2a4e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
